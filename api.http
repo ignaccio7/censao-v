@@ -1,0 +1,12 @@
+### Get all doctors
+GET http://localhost:3000/api/patients
+
+### Post a new patient
+POST http://localhost:3000/api/patients
+Content-Type: application/json
+
+{
+  "name": "Andy3 Perez",
+  "email": "andy3@google.com",
+  "password": "123"
+}
