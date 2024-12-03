@@ -2,13 +2,27 @@ import { auth } from "@/auth.config"
 import { Sidebar, TopMenu } from "@/components"
 import { redirect } from "next/navigation"
 import { SessionProvider } from "next-auth/react"
+import Tratamientos from "./tratamientos/page"
+import Pacientes from "./pacientes/page"
 
-export default async function DashboardLayout({ children }) {
+export default async function DashboardLayout({ children, params }) {
 
   const session = await auth()
+  console.log('session', session);    
 
-  if (!session) {
+  if (!session || !session.user || !session.user.role) {
     redirect('/auth/login')
+  }
+
+  const role = session?.user?.role     
+  
+  const currentPath = new URL(request.url).pathname;
+  console.log('params', currentPath);
+  
+  let content = children
+
+  if (role === 'patient') {
+    content = <Tratamientos />
   }
 
   return (
@@ -19,7 +33,7 @@ export default async function DashboardLayout({ children }) {
       <Sidebar />
 
       <div className="p-4 sm:ml-64 mt-14">
-        {children}
+        {content}
       </div>
 
     </SessionProvider>

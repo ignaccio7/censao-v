@@ -5,7 +5,7 @@ const users = [
   { id: 1, name: 'Jose Castro', email: 'jose@google.com', password: '123' ,role: 'doctor' },
   { id: 2, name: 'Lucero Quispe', email: 'lucero@google.com', password: '123' ,role: 'administrative' },
   { id: 2, name: 'Maria Sanchez', email: 'maria@google.com', password: '123' ,role: 'nurse' },
-  { id: 3, name: 'Pedro Perez', email: 'pedro@google.com', password: '123' ,role: 'user' },
+  { id: 3, name: 'Jose Luis Perez', email: 'joseluis@google.com', password: '123' ,role: 'patient' },
 ]
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
