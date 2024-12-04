@@ -8,6 +8,13 @@ const users = [
   { id: 3, name: 'Jose Luis Perez', email: 'joseluis@google.com', password: '123' ,role: 'patient' },
 ]
 
+const permissionsUrls = {
+  administrative: ['/dashboard', '/dashboard/calendario', '/auth/login'],
+  patient: ['/dashboard/tratamientos', '/dashboard/perfil', '/auth/login'],
+  nurse: ['/dashboard/pacientes', '/dashboard/tratamientos', '/dashboard/perfil', '/auth/login'],
+  doctor: ['/dashboard/pacientes', '/dashboard/tratamientos', '/dashboard/perfil', '/auth/login']
+};
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
     signIn: '/auth/login',
@@ -37,10 +44,43 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       //console.log('sessionCallback', session);
       return session;
     },
-    async authorized({ auth }) {
-      //console.log('authorizedCallback', auth);      
+    async authorized({ auth, request }) {
+      const role = auth?.user?.role
+      const pathname = request.nextUrl.pathname
+      console.log('authorizedCallback', auth);
+      console.log('role', role);      
+      console.log('request', pathname);
+      
+      
+      if(role === 'administrative' && !permissionsUrls[role].includes(pathname)){        
+        console.log('SIN PERMISOS');
+        
+        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
+      }
+      if(role === 'patient' && !permissionsUrls[role].includes(pathname)){
+        console.log('SIN PERMISOS');
+        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
+      }      
       return true;
-    } 
+    },            
+    // async redirect({ url, baseUrl }) {
+      // console.log({ url, baseUrl });      
+    
+      // const roleRedirects = {
+      //   administrative: '/dashboard',
+      //   doctor: '/dashboard/pacientes',
+      //   patient: '/dashboard/tratamientos',
+      //   nurse: '/dashboard/pacientes'
+      // };
+    
+      // console.log('ESTA ENTRANDO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      // console.log('session in redirect', session);
+    
+      // // Aquí obtenemos el rol directamente del token
+      // const role = session?.role;  
+      // return roleRedirects[role] || baseUrl;      
+      // return data.baseUrl;      
+    //},    
   },
 
   providers: [

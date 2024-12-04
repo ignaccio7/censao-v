@@ -109,6 +109,25 @@ export function Sidebar() {
               </>
             )
           }
+
+          {
+            role === 'nurse' && (
+              <>
+                <li>
+                  <Link
+                    href="/dashboard/pacientes"
+                    className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group 
+                ${pathname === '/dashboard/pacientes' ? 'bg-gray-700' : ''}`}
+                  >
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 42V38C12 35.8783 12.8429 33.8434 14.3431 32.3431C15.8434 30.8429 17.8783 30 20 30H24M44 32C44 40 39 44 37 44C35 44 30 40 30 32C32 32 35 31 37 29C39 31 42 32 44 32ZM16 14C16 16.1217 16.8429 18.1566 18.3431 19.6569C19.8434 21.1571 21.8783 22 24 22C26.1217 22 28.1566 21.1571 29.6569 19.6569C31.1571 18.1566 32 16.1217 32 14C32 11.8783 31.1571 9.84344 29.6569 8.34315C28.1566 6.84285 26.1217 6 24 6C21.8783 6 19.8434 6.84285 18.3431 8.34315C16.8429 9.84344 16 11.8783 16 14Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="flex-1 ms-3 whitespace-nowrap">Pacientes</span>
+                  </Link>
+                </li>
+              </>
+            )
+          }
         </ul>
       </div>
     </aside>
