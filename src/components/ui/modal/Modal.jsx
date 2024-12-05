@@ -1,5 +1,6 @@
 "use client"
 import { useUiStore } from "@/store/ui-store"
+import { useRouter } from "next/navigation"
 
 export function ButtonModal({ children }) {
 
@@ -21,13 +22,35 @@ export function Modal() {
 
   const isModalOpen = useUiStore(state => state.isModalOpen)
   const toggleModal = useUiStore(state => state.toggleModal)
+  const router = useRouter()
+
+  const handleSubmit = (event) => {
+    console.log(event.preventDefault());
+    const formData = new FormData(event.target)
+    console.log('Enviando el form');
+    console.log(Object.fromEntries(formData));
+  
+    fetch('/api/reservations', {
+      method: 'POST',
+      body: JSON.stringify(Object.fromEntries(formData)),      
+    }).then(res => res.json())
+      .then(data => {
+        console.log('data', data)
+        toggleModal()
+        event.target.reset()
+        router.refresh()
+      })
+      .catch(err => {
+        console.log('error', err)
+      })
+    
+  }
 
   return (
     <>
       <div id="select-modal"
         tabIndex="-1"
-        aria-hidden="true"
-        className={`${isModalOpen ? 'flex bg-black/80' : 'hidden'} z-40 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full`}
+        className={`${isModalOpen ? 'flex bg-black/80' : 'hidden'} z-40 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full`}
       >
         <div className="relative p-4 w-full max-w-md max-h-full z-50">
           {/* <!-- Modal content --> */}
@@ -41,14 +64,14 @@ export function Modal() {
                 onClick={() => toggleModal()}
                 type="button"
                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="select-modal">
-                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
                 <span className="sr-only">Close modal</span>
               </button>
             </div>
             {/* <!-- Modal body --> */}
-            <form className="p-4 md:p-5">
+            <form className="p-4 md:p-5" onSubmit={handleSubmit}>
               <div className="grid gap-4 mb-4 grid-cols-2">
                 <div className="col-span-2">
                   <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Completo</label>

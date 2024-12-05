@@ -15,6 +15,7 @@ export function TopMenu() {
     // window.location.href = '/auth/login'
   }
 
+  console.log('SALIENDO DE LA SESSION');  
   console.log(session);
   
 

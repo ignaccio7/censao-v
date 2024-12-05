@@ -86,7 +86,7 @@ export default function Calendario() {
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
-          weekends={true}
+          weekends={false}
           events={events}
           eventContent={renderEventContent}
           eventClick={handleDateClick}

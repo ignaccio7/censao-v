@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function Tratamientos() {
 
@@ -36,7 +37,9 @@ export default function Tratamientos() {
                   Vacuna Antigripal
                 </td>
                 <td className="px-6 py-4 text-left dark:text-green-500 font-bold">
-                  Terminado
+                  <Link href={"/dashboard/tratamientos/1"}>
+                    Terminado
+                  </Link>
                 </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">

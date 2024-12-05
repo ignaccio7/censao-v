@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react"
 export default async function DashboardLayout({ children }) {
 
   const session = await auth()
+  console.log('VERIFICANDO LA SESSION');  
   console.log('session', session);    
 
   if (!session || !session.user || !session.user.role) {

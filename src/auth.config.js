@@ -45,25 +45,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
     async authorized({ auth, request }) {
-      const role = auth?.user?.role
-      const pathname = request.nextUrl.pathname
-      console.log('authorizedCallback', auth);
-      console.log('role', role);      
-      console.log('request', pathname);
       
-      
-      if(role === 'administrative' && !permissionsUrls[role].includes(pathname)){                
-        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
-      }
-      if(role === 'patient' && !permissionsUrls[role].includes(pathname)){
-        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
-      }      
-      if(role === 'nurse' && !permissionsUrls[role].includes(pathname)){
-        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
-      }      
-      if(role === 'doctor' && !permissionsUrls[role].includes(pathname)){
-        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
-      }
       return true;
     },            
     // async redirect({ url, baseUrl }) {

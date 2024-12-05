@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 
 export function Sidebar() {
 
-  const [role, setRole] = useState('administrative')
+  const [role, setRole] = useState()
 
   const pathname = usePathname()
   console.log(pathname)
