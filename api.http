@@ -10,3 +10,18 @@ Content-Type: application/json
   "email": "andy3@google.com",
   "password": "123"
 }
+
+### Get all reservations
+GET http://localhost:3000/api/reservations
+
+
+### Post a new reservation
+POST http://localhost:3000/api/reservations
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "date": "2023-01-01",
+  "time": "12:00",
+  "turn": "day"
+}

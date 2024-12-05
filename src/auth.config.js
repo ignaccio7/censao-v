@@ -12,7 +12,7 @@ const permissionsUrls = {
   administrative: ['/dashboard', '/dashboard/calendario', '/auth/login'],
   patient: ['/dashboard/tratamientos', '/dashboard/perfil', '/auth/login'],
   nurse: ['/dashboard/pacientes', '/dashboard/tratamientos', '/dashboard/perfil', '/auth/login'],
-  doctor: ['/dashboard/pacientes', '/dashboard/tratamientos', '/dashboard/perfil', '/auth/login']
+  doctor: ['/dashboard', '/dashboard/pacientes', '/dashboard/tratamientos', '/dashboard/perfil', '/dashboard/almacen', '/dashboard/calendario', '/auth/login']
 };
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -52,15 +52,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       console.log('request', pathname);
       
       
-      if(role === 'administrative' && !permissionsUrls[role].includes(pathname)){        
-        console.log('SIN PERMISOS');
-        
+      if(role === 'administrative' && !permissionsUrls[role].includes(pathname)){                
         return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
       }
       if(role === 'patient' && !permissionsUrls[role].includes(pathname)){
-        console.log('SIN PERMISOS');
         return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
       }      
+      if(role === 'nurse' && !permissionsUrls[role].includes(pathname)){
+        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
+      }      
+      if(role === 'doctor' && !permissionsUrls[role].includes(pathname)){
+        return Response.redirect(new URL(permissionsUrls[role][0], request.nextUrl.origin))    
+      }
       return true;
     },            
     // async redirect({ url, baseUrl }) {

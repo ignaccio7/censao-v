@@ -43,33 +43,47 @@ export const patients = [
   },
   {
     "id": 3,
-    "name": "Sandra Choque",
-    "email": "sandra@google.com",
+    "name": "Jose Luis Condori Chambi",
+    "email": "joseluis@google.com",
     "password": "123",
     "role": "patient"
   }
 ]
+function getDate() {
+  return new Date()
+}
+function getDateAdd(time) {
+  const d = new Date()
+  d.setMinutes(d.getMinutes() + time)
+  return d
+}
+function getDateSubs(time) {
+  const d = new Date()
+  d.setMinutes(d.getMinutes() - time)
+  return d
+}
+
 export const reservations = [
   {
-    "id": 1,
-    "patientId": 1,
-    "date": "2024-12-03",
-    "time": "08:00",
-    "turn": "day"
+    id: 1,
+    patientId: 1,
+    start: getDate(),
+    end: getDateAdd(30),
+    title: "Andy Perez"
   },
   {
-    "id": 2,
-    "patientId": 2,
-    "date": "2024-12-03",
-    "time": "08:30",
-    "turn": "day"
+    id: 2,
+    patientId: 2,
+    start: getDateAdd(30),    
+    end: getDateAdd(60),
+    title: "Raquel Perez"
   },
   {
-    "id": 3,
-    "patientId": 1,
-    "date": "2024-12-03",
-    "time": "14:00",
-    "turn": "late"
+    id: 3,
+    patientId: 3,
+    start: getDateAdd(60),    
+    end: getDateAdd(90),
+    title: "Jose Luis"
   }
 ]
 export const treatments = [
