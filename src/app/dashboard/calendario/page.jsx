@@ -1,4 +1,8 @@
 "use client"
+/**
+ * https://github.com/fullcalendar/fullcalendar
+ * https://github.com/fullcalendar/fullcalendar-examples/blob/main/next13/pages/calendar.js
+ */
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -63,7 +67,7 @@ export default function Calendario() {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setEvents(data.reservations)
+        setEvents(data.reservations_in_hold)
       })
   }, [])
 

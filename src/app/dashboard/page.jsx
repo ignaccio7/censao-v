@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic"
 import { ButtonModal, Modal } from "@/components/ui/modal/Modal";
-import { reservations } from "@/data/db";
+import { reservations_attended, reservations_in_hold } from "@/data/db";
 
 export default async function Dashboard() {
 
@@ -36,13 +36,13 @@ export default async function Dashboard() {
             </thead>
             <tbody>
               {
-                reservations.map((reservation, index) => {
+                reservations_in_hold.map((reservation, index) => {
                   const now = new Date()
                   const text = reservation.start > now ? "En espera" : "En Atencion"
                   return (
                     <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {reservation.id}
+                        {index + 1}
                       </th>
                       <td className="px-6 py-4 dark:text-white">
                         {reservation.title}
@@ -81,17 +81,23 @@ export default async function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                1
-              </th>
-              <td className="px-6 py-4 dark:text-white">
-                Jose Luis Condori Chambi
-              </td>
-              <td className="px-6 py-4 text-left dark:text-slate-100 font-bold">
-                Atendido
-              </td>
-            </tr>
+            {
+              reservations_attended.map((reservation, index) => {
+                return (
+                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      {index + 1}
+                    </th>
+                    <td className="px-6 py-4 dark:text-white">
+                      {reservation.title}
+                    </td>
+                    <td className="px-6 py-4 text-left dark:text-slate-100 font-bold">
+                      {`Atendido - ${reservation.start.toLocaleTimeString()}`}
+                    </td>
+                  </tr>
+                )
+              })
+            }
           </tbody>
         </table>
       </div>

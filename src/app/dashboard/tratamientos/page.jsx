@@ -1,6 +1,10 @@
+import { getTreatments } from "@/actions/treatments/get-treatments";
 import Link from "next/link";
 
-export default function Tratamientos() {
+export default async function Tratamientos() {
+
+  const treatments = await getTreatments()
+  console.log('treatments', treatments);
 
   return (
     <div>
@@ -29,41 +33,30 @@ export default function Tratamientos() {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  13/12/2024
-                </th>
-                <td className="px-6 py-4 dark:text-white">
-                  Vacuna Antigripal
-                </td>
-                <td className="px-6 py-4 text-left dark:text-green-500 font-bold">
-                  <Link href={"/dashboard/tratamientos/1"}>
-                    Terminado
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  12/12/2024
-                </th>
-                <td className="px-6 py-4 dark:text-white">
-                  Vacuna contra el Coronavirus
-                </td>
-                <td className="px-6 py-4 text-left dark:text-yellow-500 font-bold">
-                  En seguimiento
-                </td>
-              </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  11/12/2024
-                </th>
-                <td className="px-6 py-4 dark:text-white">
-                  Vacuna contra la Varicela
-                </td>
-                <td className="px-6 py-4 text-left dark:text-green-500 font-bold">
-                  Terminado
-                </td>
-              </tr>
+              {
+                treatments.map((treatment, index) => {
+                  return (
+                    <tr 
+                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                      key={treatment.id}
+                    >
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {treatment.date.toLocaleDateString()}
+                      </th>
+                      <td className="px-6 py-4 dark:text-white">
+                        {treatment.description}
+                      </td>
+                      <td className={`${treatment.status === 'En seguimiento' ? 'dark:text-yellow-500' : 'dark:text-green-500'} 
+                        px-6 py-4 text-left font-bold`}
+                      >
+                        <Link href={`/dashboard/tratamientos/${treatment.id}`}>
+                          {treatment.status}
+                        </Link>
+                      </td>
+                    </tr>
+                  )
+                })
+              }
             </tbody>
           </table>
         </div>

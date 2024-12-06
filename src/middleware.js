@@ -22,6 +22,10 @@ export async function middleware(req) {
     doctor: ['/dashboard', '/dashboard/pacientes', '/dashboard/tratamientos', '/dashboard/perfil', '/dashboard/almacen', '/dashboard/calendario', '/auth/login']
   };
 
+  if (pathname.startsWith('/dashboard') && (role === 'patient' || role === 'doctor') && pathname.startsWith('/dashboard/tratamientos/') ) {
+    return NextResponse.next();
+  }
+
   // Si el usuario está autenticado pero intenta acceder a una página fuera de su rol
   if (pathname.startsWith('/dashboard') && role && !permissionsUrls[role]?.includes(pathname)) {
     return NextResponse.redirect(new URL(permissionsUrls[role][0], req.url));

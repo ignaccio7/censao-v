@@ -63,56 +63,79 @@ function getDateSubs(time) {
   return d
 }
 
-export const reservations = [
+export const reservations_in_hold = [
   {
-    id: 1,
+    id: 2,
     patientId: 1,
     start: getDate(),
     end: getDateAdd(30),
     title: "Andy Perez"
   },
   {
-    id: 2,
+    id: 3,
     patientId: 2,
     start: getDateAdd(30),    
     end: getDateAdd(60),
     title: "Raquel Perez"
   },
   {
-    id: 3,
+    id: 4,
     patientId: 3,
     start: getDateAdd(60),    
     end: getDateAdd(90),
     title: "Jose Luis"
+  }  
+]
+
+export const reservations_attended = [
+  {
+    id: 1,
+    patientId: 1,
+    start: getDateSubs(30),    
+    end: getDate(),
+    title: "Ismael Montes"
   }
 ]
+
 export const treatments = [
   {
     "id": 1,
     "patientId": 1,
+    "patientName": "Jose Luis Condori Chambi",
     "doctorId": 1,
-    "date": "2023-01-01",
-    "description": "Vacuna contra la rabia"
+    "date": getDate(),
+    "description": "Vacuna contra la rabia",
+    "status": "En seguimiento",
+    "nextReservation": getDateAdd(1280)
   },
   {
     "id": 2,
     "patientId": 1,
+    "patientName": "Jose Luis Condori Chambi",
     "doctorId": 1,
-    "date": "2023-02-01",
-    "description": "Vacuna contra la gripe"
+    "date": getDateSubs(1800),
+    "description": "Vacuna contra la gripe",
+    "status": 'Terminado',
+    "nextReservation": ""
   },
   {
     "id": 3,
     "patientId": 2,
+    "patientName": "Jose Luis Condori Chambi",
     "doctorId": 1,
-    "date": "2023-03-01",
-    "description": "Vacuna contra la poliomielitis"
+    "date": getDateSubs(2280),
+    "description": "Vacuna contra la poliomielitis",
+    "status": 'Terminado',
+    "nextReservation": ""
   },
   {
     "id": 4,
     "patientId": 3,
+    "patientName": "Jose Luis Condori Chambi",
     "doctorId": 1,
-    "date": "2023-04-01",
-    "description": "Vacuna contra la poliomielitis"
+    "date": getDateSubs(4520),
+    "description": "Vacuna contra el Covid",
+    "status": 'Terminado',
+    "nextReservation": ""
   }
 ]

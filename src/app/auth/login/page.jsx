@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <div className="w-full px-0 md:px-4">
-      <h1 className="text-2xl text-white pb-4">Login page</h1>
+      <h1 className="text-2xl text-white pb-4">Inicia sesión</h1>
       <form 
         className="mx-auto w-full"
         onSubmit={handleSubmit}

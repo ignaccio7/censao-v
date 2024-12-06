@@ -18,7 +18,7 @@ export function ButtonModal({ children }) {
   )
 }
 
-export function Modal() {
+export function Modal({ children }) {
 
   const isModalOpen = useUiStore(state => state.isModalOpen)
   const toggleModal = useUiStore(state => state.toggleModal)
