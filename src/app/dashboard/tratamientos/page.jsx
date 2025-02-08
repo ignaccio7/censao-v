@@ -14,7 +14,7 @@ export default async function Tratamientos() {
       <div className="waiting mb-10">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#00558E] dark:text-white">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex items-center">
@@ -37,13 +37,13 @@ export default async function Tratamientos() {
                 treatments.map((treatment, index) => {
                   return (
                     <tr 
-                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                      className="bg-white border-b dark:bg-white dark:border-gray-700"
                       key={treatment.id}
                     >
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
                         {treatment.date.toLocaleDateString()}
                       </th>
-                      <td className="px-6 py-4 dark:text-white">
+                      <td className="px-6 py-4 dark:text-black">
                         {treatment.description}
                       </td>
                       <td className={`${treatment.status === 'En seguimiento' ? 'dark:text-yellow-500' : 'dark:text-green-500'} 

@@ -50,14 +50,14 @@ export function Modal({ children }) {
     <>
       <div id="select-modal"
         tabIndex="-1"
-        className={`${isModalOpen ? 'flex bg-black/80' : 'hidden'} z-40 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full`}
+        className={`${isModalOpen ? 'flex bg-black/80' : 'hidden'} z-50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 justify-center items-center w-full md:inset-0 h-screen max-h-full`}
       >
         <div className="relative p-4 w-full max-w-md max-h-full z-50">
           {/* <!-- Modal content --> */}
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div className="relative bg-white rounded-lg shadow dark:bg-white">
             {/* <!-- Modal header --> */}
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-black">
                 Nueva Ficha
               </h3>
               <button
@@ -74,20 +74,20 @@ export function Modal({ children }) {
             <form className="p-4 md:p-5" onSubmit={handleSubmit}>
               <div className="grid gap-4 mb-4 grid-cols-2">
                 <div className="col-span-2">
-                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Completo</label>
-                  <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su nombre completo" required="" />
+                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nombre Completo</label>
+                  <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-500 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su nombre completo" required="" />
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
-                  <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su correo" required="" />
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Correo</label>
+                  <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-500 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su correo" required="" />
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono</label>
-                  <input type="number" name="phone" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su telefono" required="" />
+                  <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Telefono</label>
+                  <input type="number" name="phone" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-500 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su telefono" required="" />
                 </div>
                 <div className="col-span-2">
-                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-                  <input type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su contraseña" required="" />
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Contraseña</label>
+                  <input type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-500 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite su contraseña" required="" />
                 </div>
               </div>
               <button type="submit" className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

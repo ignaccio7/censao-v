@@ -17,7 +17,7 @@ export default async function Pacientes() {
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none text-white">
             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-user-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h1.5" /><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
           </div>
-          <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar un paciente..." required />
+          <input type="text" id="simple-search" className="bg-[#00558E] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-[#00558E] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar un paciente..." required />
         </div>
         <button type="submit" className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -30,7 +30,7 @@ export default async function Pacientes() {
       <div className="waiting mb-10">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#00558E] dark:text-white">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex items-center">
@@ -53,16 +53,16 @@ export default async function Pacientes() {
                 patients.map((patient, index) => {
                   return (
                     <tr
-                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                      className="bg-white border-b dark:bg-white dark:border-gray-700"
                       key={patient.id}
                     >
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
                         {patient.id}
                       </th>
-                      <td className="px-6 py-4 dark:text-white">
+                      <td className="px-6 py-4 dark:text-black">
                         {patient.name}
                       </td>
-                      <td className="px-6 py-4 dark:text-white">
+                      <td className="px-6 py-4 dark:text-black">
                         {patient.email}
                       </td>
                     </tr>

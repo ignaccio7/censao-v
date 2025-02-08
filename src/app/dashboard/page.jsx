@@ -16,7 +16,7 @@ export default async function Dashboard() {
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-white uppercase bg-gray-50 dark:bg-[#00558E] dark:text-white">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex items-center">
@@ -40,11 +40,11 @@ export default async function Dashboard() {
                   const now = new Date()
                   const text = reservation.start > now ? "En espera" : "En Atencion"
                   return (
-                    <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr key={index} className="bg-white border-b dark:bg-white dark:border-gray-700 ">
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
                         {index + 1}
                       </th>
-                      <td className="px-6 py-4 dark:text-white">
+                      <td className="px-6 py-4 dark:text-black">
                         {reservation.title}
                       </td>
                       <td className={`${text === 'En Atencion' ? 'dark:text-green-500' : 'dark:text-yellow-500'} px-6 py-4 text-left font-bold`}>
@@ -61,8 +61,8 @@ export default async function Dashboard() {
       </div>
       <div className="attended">
         <h2 className="text-2xl font-bold">Pacientes Atendidos</h2>
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#00558E] dark:text-white">
             <tr>
               <th scope="col" className="px-6 py-3">
                 <div className="flex items-center">
